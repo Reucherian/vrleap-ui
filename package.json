@@ -2,15 +2,21 @@
   "name": "vrleap_ui",
   "version": "1.0.0",
   "description": "UI Elements framework designed for WebVR",
-  "main": "src/index.js",
+  "main": "dist/vrleap_ui.js",
+  "module": "dist/vrleap_ui.module.js",
+  "source": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"microbundle watch --target browser\" \"serve --listen 5000\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "microbundle --target browser",
+    "version": "npm run dist && git add -A dist",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Reucherian/vrleap_ui.git"
   },
-  "files":[
+  "files": [
     "src/index.js",
     "assets/*"
   ],
@@ -29,5 +35,13 @@
   "bugs": {
     "url": "https://github.com/Reucherian/vrleap_ui/issues"
   },
-  "homepage": "https://github.com/Reucherian/vrleap_ui#readme"
+  "homepage": "https://github.com/Reucherian/vrleap_ui#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "microbundle": "^0.11.0",
+    "serve": "^10.1.2"
+  },
+  "peerDependencies": {
+    "aframe": "^0.9.0"
+  }
 }

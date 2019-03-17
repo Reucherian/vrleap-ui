@@ -1,10 +1,11 @@
 <html>
     <head>
-        <script src="https://aframe.io/releases/0.9.0/aframe.min.js">  </script>
-        <script src ="../src/index.js" ></script>
+        <script src="https://aframe.io/releases/0.9.0/aframe.js">  </script>
+        <script src ="../dist/vrleap_ui.js" ></script>
     </head>
     <a-scene light="defaultLightsEnabled:false" vr-mode-ui="enabled: true">
-        <a-entity hexagon></a-entity>    
+        <a-entity views></a-entity> 
+        <a-entity cards></a-entity>
         <a-sky color="#E9E9EA"></a-sky>
     </a-scene>
 </html>
