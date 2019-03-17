@@ -1,4 +1,4 @@
-const views = AFRAME.registerComponent('views',{
+export const views = AFRAME.registerComponent('views',{
     schema:{
         position :{default:'0 0 -2'},
         rotpos: {default:'rot0'},
@@ -70,5 +70,3 @@ const views = AFRAME.registerComponent('views',{
       }
       
 });
-
-export {views};

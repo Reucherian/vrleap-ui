@@ -1,4 +1,4 @@
-const cards = AFRAME.registerComponent('cards', {
+export const cards = AFRAME.registerComponent('cards', {
     // This is basically a copy of the gemoetry of a box and there really is no difference other than our modified default for depth height and width
         schema: {
           color: {default:"red"},
@@ -27,4 +27,3 @@ const cards = AFRAME.registerComponent('cards', {
             this.el.setObject3D('card',new THREE.Mesh(geometry,material))
         }
     });
-export {cards}
