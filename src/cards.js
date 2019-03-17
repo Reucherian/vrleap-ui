@@ -1,4 +1,4 @@
-export const cards = AFRAME.registerComponent('cards', {
+export const cards = AFRAME.registerComponent('card', {
     // This is basically a copy of the gemoetry of a box and there really is no difference other than our modified default for depth height and width
         schema: {
           color: {default:"red"},
