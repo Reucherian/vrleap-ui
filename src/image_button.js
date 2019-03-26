@@ -1,0 +1,41 @@
+export const image_button = AFRAME.registerComponent('image_button',{
+    schema:{
+        color:{default:'white'},
+        src:{default:'../assets/start.png'},
+        radius:{default:0.02, min:0},
+        height:{default:0.0025},
+        position:{
+            default:{
+            x:0.055,
+            y:0.067,
+            z:0.0175
+            }
+          },
+        rotation:{
+            default:{
+                x:90,
+                y:0,
+                z:0,
+            }
+        }
+    },
+    init:function(){
+    var image_button = document.createElement('a-entity');
+    image_button.setAttribute('geometry',{
+        primitive:'cylinder',
+        height:this.data.height,
+        radius:this.data.radius
+    });
+    image_button.setAttribute('material',{
+        src:this.data.default,
+        color:this.data.default
+    });
+    image_button.setAttribute('rotation',{
+        x:this.data.rotation.x,
+        y:this.data.rotation.y,
+        z:this.data.rotation.z
+    })
+    image_button.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
+    this.el.parentNode.appendChild(image_button);
+    }
+})

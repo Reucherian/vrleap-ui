@@ -4,8 +4,10 @@
         <script src ="../dist/vrleap_ui.umd.js" ></script>
     </head>
     <a-scene light="defaultLightsEnabled:false" vr-mode-ui="enabled: true">
-        <!-- <a-entity views></a-entity>  -->
-        <a-entity card position="0 0 -4"></a-entity>
+        <a-entity camera="near: 0.01" look-controls></a-entity>
+        <a-entity card="height:0.3">
+        <a-entity image_button> </a-entity>
+        </a-entity>
         <a-sky color="#E9E9EA"></a-sky>
     </a-scene>
 </html>
