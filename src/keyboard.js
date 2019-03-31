@@ -1,28 +1,4 @@
-<!--<html>
-    <head>
-        <script src="https://aframe.io/releases/0.9.0/aframe.js">  </script>
-        <script src ="../dist/vrleap_ui.umd.js" ></script>
-    </head>
-    <a-scene light="defaultLightsEnabled:false" vr-mode-ui="enabled: true">
-        <a-entity camera="near: 0.01" look-controls></a-entity>
-        <a-entity card="height:0.3">
-        <a-entity image_button> </a-entity>
-        </a-entity>
-        <a-sky color="#E9E9EA"></a-sky>
-    </a-scene>
-</html> -->
-    <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
-    <title>Examples • Painting</title>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script>
-    <script src ="../dist/vrleap_ui.umd.js" ></script>
-    <script>
-        AFRAME.registerComponent('keyboard', {
+export const keyboard = AFRAME.registerComponent('keyboard', {
   init: function () {
         var searchBar = document.createElement('a-entity');
         searchBar.setAttribute('geometry',{primitive:'box', height:0.08, width:1.5, depth: 0.02 });
@@ -147,33 +123,3 @@
       this.el.parentNode.appendChild(plane);
   }
 });
-        
-    AFRAME.registerComponent('tappable',{
-              init: function () {
-                this.el.addEventListener('mouseenter', this.click.bind(this));
-              },
-            
-              click: function (e) {
-                console.log(this.el.children[0].getAttribute("value"));
-                var x = this.el.children[0].getAttribute("value"); 
-                var searchBar = document.querySelector('#searchBar');
-                var text = searchBar.children[0];
-                text.setAttribute("value", text.getAttribute("value")+ x);
-
-              }
-            });
-
-
-            
-        </script>
-  </head>
-  <body>
-    <a-scene debug leap="host: 127.0.0.1" vr-mode-ui="enabled: true" clickable>
-      <a-entity camera wasd-controls look-controls position="0 0 0">
-      </a-entity>
-
-      <a-entity keyboard> </a-entity>
-      <!-- <a-sky color="black"></a-sky> -->
-    </a-scene>
-  </body>  
-</html>
