@@ -1,7 +1,7 @@
 export const image_button = AFRAME.registerComponent('image_button',{
     schema:{
         color:{default:'white'},
-        src:{default:'../assets/start.png'},
+        src:{default:'/assets/start.png'},
         radius:{default:0.02, min:0},
         height:{default:0.0025},
         position:{

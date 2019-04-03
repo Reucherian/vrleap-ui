@@ -1,4 +1,4 @@
-export const cards = AFRAME.registerComponent('card', {
+export const card = AFRAME.registerComponent('card', {
     // This is basically a copy of the gemoetry of a box and there really is no difference other than our modified default for depth height and width
         schema: {
           depth: {default: 0.01, min: 0},
@@ -12,7 +12,7 @@ export const cards = AFRAME.registerComponent('card', {
             z:-0.2
             }
           },
-          src:{default:'../assets/rounded_edges.png'}
+          src:{default:'/assets/rounded_edges.png'}
         },
         init: function () {
           this.el.setAttribute('geometry',{
