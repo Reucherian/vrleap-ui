@@ -15,19 +15,17 @@ export const cards = AFRAME.registerComponent('card', {
           src:{default:'../assets/rounded_edges.png'}
         },
         init: function () {
-          var card = document.createElement('a-entity');
-          card.setAttribute('geometry',{
+          this.el.setAttribute('geometry',{
             primitive:'box',
             height:this.data.height,
             width:this.data.width,
             depth:this.data.depth
           });
-          card.setAttribute('material',{
+          this.el.setAttribute('material',{
             transparent:'true',
             color:this.data.color,
             src:this.data.src,
           });
-          card.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
-          this.el.parentNode.appendChild(card);
+          this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
         }
     });

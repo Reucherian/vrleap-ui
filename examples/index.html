@@ -1,11 +1,11 @@
 <html>
     <head>
-        <script src="https://aframe.io/releases/0.9.0/aframe.js">  </script>
-        <script src ="../dist/vrleap_ui.umd.js" ></script>
+        <script src="https://aframe.io/releases/0.9.0/aframe.min.js">  </script>
+        <script src ="../dist/vrleap_ui.js" ></script>
     </head>
-    <a-scene light="defaultLightsEnabled:false" vr-mode-ui="enabled: true">
+    <a-scene vr-mode-ui="enabled: true">
         <a-entity camera="near: 0.01" look-controls></a-entity>
-        <a-entity card="height:0.3">
+        <a-entity card >
         <a-entity image_button> </a-entity>
         </a-entity>
         <a-sky color="#E9E9EA"></a-sky>

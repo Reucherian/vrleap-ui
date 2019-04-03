@@ -52,7 +52,7 @@ export const views = AFRAME.registerComponent('views',{
         cards = []
         for (var i=0;i<6;i++){
             console.log("yeah you called hexagon")
-            cards.push(document.createElement('a-box'))
+            cards.push(this.append.createElement('a-box'))
         }
     },
     full_body_carousel_right_move:function() {

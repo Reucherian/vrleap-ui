@@ -20,22 +20,20 @@ export const image_button = AFRAME.registerComponent('image_button',{
         }
     },
     init:function(){
-    var image_button = document.createElement('a-entity');
-    image_button.setAttribute('geometry',{
+    this.el.setAttribute('geometry',{
         primitive:'cylinder',
         height:this.data.height,
         radius:this.data.radius
     });
-    image_button.setAttribute('material',{
-        src:this.data.default,
-        color:this.data.default
+    this.el.setAttribute('material',{
+        src:this.data.src,
+        color:this.data.color,
     });
-    image_button.setAttribute('rotation',{
+    this.el.setAttribute('rotation',{
         x:this.data.rotation.x,
         y:this.data.rotation.y,
         z:this.data.rotation.z
     })
-    image_button.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
-    this.el.parentNode.appendChild(image_button);
+    this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
     }
 })
