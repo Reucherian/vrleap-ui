@@ -1,16 +1,3 @@
-<!--<html>
-    <head>
-        <script src="https://aframe.io/releases/0.9.0/aframe.min.js">  </script>
-        <script src ="../dist/vrleap_ui.js" ></script>
-    </head>
-    <a-scene vr-mode-ui="enabled: true">
-        <a-entity camera="near: 0.01" look-controls></a-entity>
-        <a-entity card >
-        <a-entity image_button> </a-entity>
-        </a-entity>
-        <a-sky color="#E9E9EA"></a-sky>
-    </a-scene>
-</html> -->
     <html>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,158 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
     <title>Examples • Painting</title>
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script>
-    <script src ="../dist/vrleap_ui.umd.js" ></script>
-    <script>
-        AFRAME.registerComponent('keyboard', {
-  init: function () {
-        var searchBar = document.createElement('a-entity');
-        searchBar.setAttribute('geometry',{primitive:'box', height:0.08, width:1.5, depth: 0.02 });
-        searchBar.setAttribute('id', "searchBar");
-        searchBar.setAttribute('position',"0 0.5 -1");
-        searchBar.setAttribute('material', {opacity:0.5, color:'#A9A9A9'});
-
-        var searchBarTextElement = document.createElement('a-text');
-        searchBarTextElement.setAttribute('scale',"0.3 0.3 0.3");
-        searchBarTextElement.setAttribute('rotation',"0 0 0");
-        searchBarTextElement.setAttribute('value',"Test");
-        searchBarTextElement.setAttribute('color','#68696b');
-        searchBarTextElement.setAttribute('position',"-0.7 0 0");
-
-        searchBar.appendChild(searchBarTextElement);
-        this.el.parentNode.appendChild(searchBar);
-
-        //Keyboard Base  
-        var plane = document.createElement('a-entity');
-        plane.setAttribute('geometry',{primitive:'cylinder', radius: 0.87, segmentsRadial: 140, thetaLength: -200, openEnded: true });
-        plane.setAttribute('material',{color: "#A9A9A9", transparent: true });
-        plane.setAttribute('rotation'," 0 -90 0");
-        plane.setAttribute('position', "0 -0.3 -0.3");
-
-        var keys = ["P","O","I","U","Y","T","R","E", "W", "Q"]
-        var key_x = 0.1;
-        var key_y = [0.34, 0.33, 0.32, 0.31, 0.31, 0.31, 0.32, 0.33, 0.34, 0.35] ;
-        var key_z = -0.5
-        var key_rotation_y = -45;
-
-        for (i in keys){
-          var key = document.createElement('a-entity');
-          key.setAttribute('geometry',{ primitive:'box', height:0.04, width:0.03, depth: 0.04 });
-          key.setAttribute('position',Math.abs(key_x) + " " + key_y[i] + " " + key_z);
-          key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
-          key.setAttribute('material', {opacity:0.5,  color:'white'});
-          key.setAttribute('tappable', '');
-
-          var keyTextElement = document.createElement('a-text');
-          keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
-          keyTextElement.setAttribute('rotation',"0 90 0");
-          keyTextElement.setAttribute('value',keys[i]);
-          keyTextElement.setAttribute('color','black');
-          keyTextElement.setAttribute('position',"0.017 0 0");
-        
-          key_x = key_x - 0.018;
-          key_z = key_z + 0.1;
-          key_rotation_y = key_rotation_y + 10;
-          key.appendChild(keyTextElement);
-          plane.appendChild(key);
-        }
-
-        //2nd row of keys
-        keys = ["L","K","J","H","G","F","D","S", "A"]
-        key_x = 0.1;
-        key_z = -0.4
-        key_rotation_y = -35;
-
-        for (i in keys){
-          var key = document.createElement('a-entity');
-          key.setAttribute('geometry',{ primitive:'box', height:0.04, width:0.03, depth: 0.04 });
-          key.setAttribute('position',Math.abs(key_x) + " " + "0.26" + " " + key_z);
-          key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
-          key.setAttribute('material', { opacity:0.5, color:'white'});
-          key.setAttribute('tappable', '');
-
-          var keyTextElement = document.createElement('a-text');
-          keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
-          keyTextElement.setAttribute('rotation',"0 90 0");
-          keyTextElement.setAttribute('value',keys[i]);
-          keyTextElement.setAttribute('color','black');
-          keyTextElement.setAttribute('position', "0.017 0 0");
-
-          key_x = key_x - 0.018;
-          key_z = key_z + 0.1;
-          key_rotation_y = key_rotation_y + 10;
-          key.appendChild(keyTextElement);
-          plane.appendChild(key);
-        }
-
-      //3rd row of keys
-      keys = ["M","N","B","V","C","X","Z"]
-      key_x = 0.1;
-      key_y = [0.20, 0.21, 0.21, 0.21, 0.20, 0.19, 0.18] ;
-      key_z = -0.3
-      key_rotation_y = -25;
-
-      for (i in keys){
-        var key = document.createElement('a-entity');
-        key.setAttribute('geometry',{ primitive:'box', height:0.04, width:0.03, depth: 0.04 });
-        key.setAttribute('position',Math.abs(key_x) + " " + key_y[i]+ " " + key_z);
-        key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
-        key.setAttribute('material', { opacity:0.5, color:'white' });
-        key.setAttribute('tappable', '');
-
-        var keyTextElement = document.createElement('a-text');
-        keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
-        keyTextElement.setAttribute('rotation',"0 90 0");
-        keyTextElement.setAttribute('value',keys[i]);
-        keyTextElement.setAttribute('color','black');
-        keyTextElement.setAttribute('position',"0.017 0 0");
-      
-        key_x = key_x - 0.018;
-        key_z = key_z + 0.1;
-        key_rotation_y = key_rotation_y + 10;
-        key.appendChild(keyTextElement);
-        plane.appendChild(key);
-      }
-
-      var spaceKey = document.createElement('a-entity');
-      spaceKey.setAttribute('geometry',{ primitive:'cylinder', radius: 0.01,  height: 0.2 });
-      spaceKey.setAttribute('position',"0.1 0.18 0");
-      spaceKey.setAttribute('rotation', "90 0 0" );
-      spaceKey.setAttribute('material', { opacity:0.5, color:'white'});
-      spaceKey.setAttribute('tappable', '');
-
-      var keyTextElement = document.createElement('a-text');
-      keyTextElement.setAttribute('value'," ");
-      
-      spaceKey.appendChild(keyTextElement);
-      plane.appendChild(spaceKey);
-      this.el.parentNode.appendChild(plane);
-  }
-});
-        
-    AFRAME.registerComponent('tappable',{
-              init: function () {
-                this.el.addEventListener('mouseenter', this.click.bind(this));
-              },
-            
-              click: function (e) {
-                console.log(this.el.children[0].getAttribute("value"));
-                var x = this.el.children[0].getAttribute("value"); 
-                var searchBar = document.querySelector('#searchBar');
-                var text = searchBar.children[0];
-                text.setAttribute("value", text.getAttribute("value")+ x);
-
-              }
-            });
-        </script>
+    <script src ="/dist/vrleap_ui.umd.js" ></script>
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: true" clickable>
       <a-entity camera wasd-controls look-controls position="0 0 0">
       </a-entity>
       <a-entity keyboard> </a-entity>
-      <!-- <a-sky color="black"></a-sky> -->
     </a-scene>
   </body>  
 </html>

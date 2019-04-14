@@ -1,6 +1,6 @@
-export const views = AFRAME.registerComponent('views',{
+export const view = AFRAME.registerComponent('view',{
     schema:{
-        position :{default:'0 0 -2'},
+        position :{default:'0 1.6 -2'},
         rotpos: {default:'rot0'},
         animation:{
             default:{
@@ -47,24 +47,19 @@ export const views = AFRAME.registerComponent('views',{
     },
     init:function(){
         // We are going to try and add all the a-cards here
-        // TODO: for now these are just boxed future implementation includes using a custom component called a-card
-        console.log(AFRAME)
-        cards = []
-        for (var i=0;i<6;i++){
-            cards.push(this.el.append(card))
-        }
+        
+
     },
     full_body_carousel_right_move:function() {
-        cards = this
         console.log("entering this function")
         if (lastrot == "none") {
-          cards.emit("rot0");
+          this.el.emit("rot0");
           lastrot = "rot0";
         } else {
           console.log()
           lastrot = "rot" + (String((Number(lastrot[3]) + 1) % 6));
           console.log(lastrot)
-          cards.emit(lastrot);
+          this.el.emit(lastrot);
         }
       }
       
