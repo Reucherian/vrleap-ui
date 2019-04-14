@@ -1,10 +1,10 @@
-export const image_button = AFRAME.registerComponent('image_button',{
+const image_button_component = AFRAME.registerComponent('image_button',{
     schema:{
         color:{default:'white'},
         src:{default:'/assets/start.png'},
         radius:{default:0.02, min:0},
         height:{default:0.0025},
-        position:{
+        position:{type:'vec3',
             default:{
             x:0.055,
             y:0.067,
@@ -36,4 +36,19 @@ export const image_button = AFRAME.registerComponent('image_button',{
     })
     this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
     }
-})
+});
+const image_button_primitive = AFRAME.registerPrimitive('a-image_button',{
+    defaultComponents:{
+      image_button: {}
+    },
+    mappings:{
+      src:'image_button.src',
+      color:'image_button.color',
+      radius:'image_button.radius',
+      height:'image_button.height',
+      position:'image_button.position',
+      rotation:'image_button.rotation'
+    }
+  })
+
+  export {image_button_primitive,image_button_component}
