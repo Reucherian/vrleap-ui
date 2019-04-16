@@ -37,7 +37,7 @@ const image_button_component = AFRAME.registerComponent('image_button',{
     this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
     }
 });
-const image_button_primitive = AFRAME.registerPrimitive('a-image_button',{
+const image_button_primitive = AFRAME.registerPrimitive('a-imagebutton',{
     defaultComponents:{
       image_button: {}
     },
