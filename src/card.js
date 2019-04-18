@@ -28,6 +28,7 @@ const card_component = AFRAME.registerComponent('card', {
         });
         console.log(this.data.position)
         this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
+        this.el.setAttribute('shadow',{cast:true, receive:true});
       }
   });
 

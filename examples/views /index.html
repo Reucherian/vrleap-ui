@@ -1,0 +1,59 @@
+<html>
+    <head>
+            <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>		
+            <script src ="../../dist/vrleap_ui.umd.js" ></script>
+    </head>
+    <body>
+            <a-scene vr-mode-ui="enabled: true" clickable loadresults>
+                    <a-assets>
+                            <img id="poster1" src="/assets/poster1.png">
+                            <img id="poster2" src="/assets/poster2.png">
+                    </a-assets>
+                <a-entity position ="0 1.6 0">
+                    <a-entity light="type: ambient; color: #FFFFFF; intensity: 0.58" position="0 0.2 0"></a-entity>
+                    <a-entity light="type: spot; angle:70; castShadow:true; color: #FFFFFF; intensity: 0.3" position="0 0.2 0.015" target="#directionaltarget1"></a-entity>
+                    <a-entity light="type: spot; angle:70; castShadow:true; color: #FFFFFF; intensity: 0.3" position="0 -0.2 -0.015" target="#directionaltarget2"></a-entity>
+                </a-entity>
+                <a-entity view="src1:#poster1; src2:#poster2;" position="0 1.6 0">
+                    <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                    </a-entity>
+                     <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                     </a-entity>
+                     <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                     </a-entity>
+                     <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                     </a-entity>
+                     <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                     </a-entity>
+                     <a-entity>
+                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                            width="0.1875" height="0.15" depth="0.005">
+                            <a-imagebutton></a-imagebutton>
+                        </a-box>
+                     </a-entity>
+                </a-entity>
+                <a-sky color="#E9E9EA"></a-sky>
+        </a-scene>
+        
+    </body>
+</html>

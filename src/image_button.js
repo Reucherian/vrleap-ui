@@ -35,6 +35,7 @@ const image_button_component = AFRAME.registerComponent('image_button',{
         z:this.data.rotation.z
     })
     this.el.object3D.position.set(this.data.position.x,this.data.position.y,this.data.position.z);
+    this.el.setAttribute('shadow',{cast:true, receive:true});
     }
 });
 const image_button_primitive = AFRAME.registerPrimitive('a-imagebutton',{
