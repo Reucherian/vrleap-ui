@@ -48,7 +48,7 @@ export const view = AFRAME.registerComponent('view',{
     init:function(){
         // We are going to try and add all the a-cards here
         var card1 = document.createElement('a-entity')
-        card1.setAttribute('card','')
+        card1.setAttribute('card')
     },
     full_body_carousel_right_move:function() {
         console.log("entering this function")
