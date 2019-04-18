@@ -1,0 +1,109 @@
+<html>
+  <head>
+      <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>		
+     <script src ="../../dist/vrleap_ui.umd.js" ></script>
+      <script>
+         
+      AFRAME.registerComponent('tappable',{
+        init: function () {
+           this.el.addEventListener('mouseenter', this.click.bind(this));
+        },
+            
+        click: function (e) {
+          if ((this.el.getAttribute("id")) == 'backspace'){
+            boxColor  = this.el.getAttribute("material").color
+            this.el.setAttribute("material", 'color:green');
+            setTimeout(() => {
+              this.el.setAttribute("material", 'color:'+boxColor);
+            }, 500)
+            var searchBar = document.querySelector('#searchBar');
+            var text = searchBar.children[0];
+            str = text.getAttribute("value");
+            str = str.substring(0, str.length - 1); 
+            text.setAttribute("value", str);
+          }
+          else{
+            boxColor = this.el.getAttribute("material").color
+            this.el.setAttribute("material", 'color:green');
+            setTimeout(() => {
+              this.el.setAttribute("material", 'color:'+boxColor);
+            }, 500)
+            var x = this.el.children[0].getAttribute("value"); 
+            var searchBar = document.querySelector('#searchBar');
+            var text = searchBar.children[0];
+            text.setAttribute("value", text.getAttribute("value")+ x);
+          }
+        }
+      });
+
+      AFRAME.registerComponent('loadresults',{
+        init: function () {
+          this.el.addEventListener('click', this.click.bind(this));
+         },
+           
+        click: function (e) {
+          var searchBar = document.querySelector('#searchBar');
+          var text = searchBar.children[0];
+          var search = text.getAttribute('value');
+          var scene = this.el.parentNode;
+          this.el.parentNode.removeChild(document.querySelector('#backspace'))
+          this.el.parentNode.removeChild(this.el)
+
+          const Http = new XMLHttpRequest();
+          const url='http://api.duckduckgo.com/?q=' + search.toLowerCase() + "+wikipedia" + '&format=json';
+          Http.open("GET", url);
+          Http.send();
+          Http.onreadystatechange=(e)=>{
+            var json = JSON.parse(Http.responseText);
+            if(json.AbstractText != ""){
+              text = json.AbstractText;
+              image = "../../assets/search/"+search.toLowerCase().replace(" ","") +".jpg";
+              console.log(image)
+              this.createSearchResultImages(scene, image);
+            }
+            else{
+               text = "Sorry Invalid Search Query!"
+            }  
+                        
+            this.createSearchResult(scene, text);
+          }
+        },
+
+        createSearchResult : function(scene, text){
+          var textCard = document.createElement('a-entity');
+          textCard.setAttribute('card',{height:1.6, width:1.6, position: "-0.3 -0.2 -1" });
+          textCard.setAttribute('material', {opacity:0.5, color:'white'});
+          
+          var cardTextElement = document.createElement('a-text');
+          cardTextElement.setAttribute('rotation',"0 0 0");
+          cardTextElement.setAttribute('value',text);
+          cardTextElement.setAttribute('color','#68696b');
+          cardTextElement.setAttribute('position',"0.1 0 0.3");
+          
+          textCard.appendChild(cardTextElement);
+          scene.appendChild(textCard);
+        },
+
+        createSearchResultImages(scene, imageUrl){
+          var image = document.createElement('a-entity');
+          image.setAttribute('card',{height:1.6, width:1.6, src:imageUrl , position: "-3.0 -0.2 -1"});
+          image.setAttribute('rotation', "0 30 0");
+          scene.appendChild(image);
+        }
+      });
+  
+  
+    </script>
+  </head>
+<body>
+    <a-scene vr-mode-ui="enabled: true" clickable loadresults>
+      <a-entity camera wasd-controls look-controls position="0 0 0">
+          <a-entity raycaster="objects: .tappable" cursor color="black""></a-entity>
+        </a-entity>
+      </a-entity>
+
+      <a-entity keyboard></a-entity>
+      <a-sky color="#E9E9EA"></a-sky>
+    </a-scene>
+  </body>  
+</html>

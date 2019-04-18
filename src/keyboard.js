@@ -9,7 +9,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     var searchBarTextElement = document.createElement('a-text');
     searchBarTextElement.setAttribute('scale',"0.3 0.3 0.3");
     searchBarTextElement.setAttribute('rotation',"0 0 0");
-    searchBarTextElement.setAttribute('value',"Test");
+    searchBarTextElement.setAttribute('value',"");
     searchBarTextElement.setAttribute('color','#68696b');
     searchBarTextElement.setAttribute('position',"-0.7 0 0");
 
@@ -22,6 +22,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     backSpaceKey.setAttribute('material', {opacity:0.5,  color:'#A9A9A9'});
     backSpaceKey.setAttribute('id', 'backspace')
     backSpaceKey.setAttribute('tappable', '');
+    backSpaceKey.setAttribute('class', 'tappable');
 
       var keyTextElement = document.createElement('a-text');
       keyTextElement.setAttribute('scale',"0.3 0.3 0.3");
@@ -55,6 +56,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
       key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
       key.setAttribute('material', {opacity:1,  color:'white'});
       key.setAttribute('tappable', '');
+      key.setAttribute('class', 'tappable');
 
       var keyTextElement = document.createElement('a-text');
       keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
@@ -84,7 +86,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
       key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
       key.setAttribute('material', { opacity:1, color:'white'});
       key.setAttribute('tappable', '');
-      // key.setAttribute('id','mykeys');
+      key.setAttribute('class', 'tappable');
 
       var keyTextElement = document.createElement('a-text');
       keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
@@ -114,7 +116,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     key.setAttribute('rotation', "0 "+ key_rotation_y + " 0" );
     key.setAttribute('material', { opacity:1, color:'white' });
     key.setAttribute('tappable', '');
-    // key.setAttribute('id','mykeys');
+    key.setAttribute('class', 'tappable');
 
     var keyTextElement = document.createElement('a-text');
     keyTextElement.setAttribute('scale',"0.05 0.05 0.05");
@@ -128,6 +130,8 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     key_rotation_y = key_rotation_y + 10;
     key.appendChild(keyTextElement);
     plane.appendChild(key);
+
+    console.log(key)
   }
 
   var spaceKey = document.createElement('a-entity');
@@ -136,7 +140,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
   spaceKey.setAttribute('rotation', "90 0 0" );
   spaceKey.setAttribute('material', { opacity:1, color:'white'});
   spaceKey.setAttribute('tappable', '');
-  // key.setAttribute('id','mykeys');
+  spaceKey.setAttribute('class', 'tappable');
 
   var keyTextElement = document.createElement('a-text');
   keyTextElement.setAttribute('value'," ");
