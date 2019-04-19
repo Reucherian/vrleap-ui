@@ -17,19 +17,19 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     this.el.parentNode.appendChild(searchBar);
 
     var backSpaceKey = document.createElement('a-entity');
-    backSpaceKey.setAttribute('geometry',{ primitive:'box', height:0.08, width:0.5, depth: 0.02 });
-    backSpaceKey.setAttribute('position', "0.75 2.1 -1");
+    backSpaceKey.setAttribute('geometry',{ primitive:'box', height:0.02, width:0.3, depth: 0.01 });
+    backSpaceKey.setAttribute('position', "-0.04 1.700 -0.25");
     backSpaceKey.setAttribute('material', {opacity:0.5,  color:'#A9A9A9'});
     backSpaceKey.setAttribute('id', 'backspace')
     backSpaceKey.setAttribute('tappable', '');
     backSpaceKey.setAttribute('class', 'tappable');
 
       var keyTextElement = document.createElement('a-text');
-      keyTextElement.setAttribute('scale',"0.3 0.3 0.3");
+      keyTextElement.setAttribute('scale',"0.1 0.1 0.1");
       keyTextElement.setAttribute('rotation',"0 0 0");
-      keyTextElement.setAttribute('value',"<- Backspace");
+      keyTextElement.setAttribute('value',"Backspace");
       keyTextElement.setAttribute('color','#68696b');
-      keyTextElement.setAttribute('position',"-0.2 0 0");
+      keyTextElement.setAttribute('position',"-0.08 0 0.006");
 
       backSpaceKey.appendChild(keyTextElement);
 
@@ -67,7 +67,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     
     console.log(key_x)
       key_x = key_x - 0.03;
-      key_z = key_z + 0.1;
+      key_z = key_z + 0.08;
       key_rotation_y = key_rotation_y + 10;
       key.appendChild(keyTextElement);
       plane.appendChild(key);
@@ -96,7 +96,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
       keyTextElement.setAttribute('position', "0.017 0 0");
 
       key_x = key_x - 0.03;
-      key_z = key_z + 0.1;
+      key_z = key_z + 0.08;
       key_rotation_y = key_rotation_y + 10;
       key.appendChild(keyTextElement);
       plane.appendChild(key);
@@ -126,7 +126,7 @@ export const keyboard = AFRAME.registerComponent('keyboard', {
     keyTextElement.setAttribute('position',"0.017 0 0");
   
     key_x = key_x - 0.03;
-    key_z = key_z + 0.1;
+    key_z = key_z + 0.08;
     key_rotation_y = key_rotation_y + 10;
     key.appendChild(keyTextElement);
     plane.appendChild(key);

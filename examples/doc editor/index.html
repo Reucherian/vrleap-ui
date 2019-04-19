@@ -9,11 +9,11 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script>
     <script src ="../../dist/vrleap_ui.umd.js" ></script>
     <!-- Uncomment/include your own interaction library script source -->
-    <script src="../../../aframe-leap-hands/dist/aframe-leap-hands.umd.js"></script>
+    <script src="../../dist/aframe-leap-hands.umd.js"></script>
     <script src="binder.js"></script>
   </head>
   <body>
-    <a-scene leap="host: 127.0.0.1" vr-mode-ui="enabled: true" clickable fistable swipable>
+    <a-scene leap="host: 192.168.0.104" vr-mode-ui="enabled: true" clickable fistable swipable>
       <a-entity camera wasd-controls look-controls position="0 1.6 0">
           <a-entity leap-hand="hand: left; enablePhysics: true;"></a-entity>
           <a-entity leap-hand="hand: right; enablePhysics: true;"></a-entity>
@@ -23,6 +23,10 @@
     </a-scene>
   </body>
   <script>
+    var scene = document.querySelector('a-scene');
+    scene.addEventListener('enter-vr',(event)=>{
+      window.scrollTop = 0;
+    });
     var e = document.createElement('a-entity');
     e.setAttribute('position','0.3 2.3 -2');
     e.setAttribute('text',"value:" + glob_buffer + ";width: 2; color: black; lineHeight:100");
@@ -30,6 +34,25 @@
     e.setAttribute('id',"editor");
     // console.log(document.body.querySelector('a-scene'))
     document.body.querySelector('a-scene').appendChild(e);
+
+    var backSpaceKey = document.createElement('a-entity');
+    backSpaceKey.setAttribute('geometry',{ primitive:'box', height:0.02, width:0.3, depth: 0.01 });
+    backSpaceKey.setAttribute('position', "0.16 1.760 -0.25");
+    backSpaceKey.setAttribute('material', {opacity:0.5,  color:'#A9A9A9'});
+    backSpaceKey.setAttribute('id', 'glob_backspace')
+    backSpaceKey.setAttribute('tappable', '');
+    backSpaceKey.setAttribute('class', 'tappable');
+    // backSpaceKey.setAttribute('visible', false);
+    var keyTextElement = document.createElement('a-text');
+    keyTextElement.setAttribute('scale',"0.1 0.1 0.1");
+    keyTextElement.setAttribute('rotation',"0 0 0");
+    keyTextElement.setAttribute('value',"Backspace");
+    keyTextElement.setAttribute('color','#68696b');
+    keyTextElement.setAttribute('position',"-0.08 0 0.006");
+
+    backSpaceKey.appendChild(keyTextElement);
+    document.body.querySelector('a-scene').appendChild(backSpaceKey);
+
   </script>  
 </html>
       

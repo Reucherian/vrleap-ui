@@ -20,8 +20,21 @@ AFRAME.registerComponent('tappable',{
         }, 500);
     }
   });
+var viewMode = false;
 function updateText(text){
-    buffer += text;
+    if(text === "Backspace"){
+      if(buffer != ""){
+        buffer = buffer.slice(0, -1);
+      }
+      if(viewMode){
+        if(glob_buffer != ""){
+          glob_buffer = glob_buffer.slice(0, -1);
+          document.getElementById('editor').setAttribute('text',"value:" + glob_buffer + ";width: 2; color: black; lineHeight:100");
+        }
+      }
+    }
+    else
+      buffer += text;
     document.getElementById("searchBar").children[0].setAttribute('value',buffer); 
 }
 
@@ -37,7 +50,8 @@ AFRAME.registerComponent('fistable',{
         keys.setAttribute('visible',false);
 
         var keys = document.getElementById('mykeys');
-        keys.setAttribute('visible',false);
+        keys.setAttribute('position', "0 0.5 -0.3");
+        // keys.setAttribute('visible',false);
 
         var keys = document.getElementById('backspace');
         keys.setAttribute('visible',false);
@@ -45,6 +59,10 @@ AFRAME.registerComponent('fistable',{
         var keys = document.getElementById('editor');
         keys.setAttribute('visible',true);
 
+        var keys = document.getElementById('glob_backspace');
+        keys.setAttribute('visible',true);
+
+        viewMode = true;
         this.close = true;
       }
       else{
@@ -52,7 +70,8 @@ AFRAME.registerComponent('fistable',{
         keys.setAttribute('visible',true);
 
         var keys = document.getElementById('mykeys');
-        keys.setAttribute('visible',true);
+        keys.setAttribute('position', "0 1.3 -0.3");
+        //keys.setAttribute('visible',true);
 
         var keys = document.getElementById('backspace');
         keys.setAttribute('visible',true);
@@ -60,6 +79,10 @@ AFRAME.registerComponent('fistable',{
         var keys = document.getElementById('editor');
         keys.setAttribute('visible',false);
 
+        var keys = document.getElementById('glob_backspace');
+        keys.setAttribute('visible',false);
+
+        viewMode = false;
         this.close = false;
       }
     }
