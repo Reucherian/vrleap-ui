@@ -29,45 +29,47 @@
                     <a-entity light="type: spot; angle:70; castShadow:true; color: #FFFFFF; intensity: 0.3" position="0 0.2 0.015" target="#directionaltarget1"></a-entity>
                     <a-entity light="type: spot; angle:70; castShadow:true; color: #FFFFFF; intensity: 0.3" position="0 -0.2 -0.015" target="#directionaltarget2"></a-entity>
                 </a-entity>
-                <a-entity view="src1:#poster1; src2:#poster2;" position="0 1.6 0">
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton id="paint" tappable></a-imagebutton>
-                        </a-box>
+                <a-entity id="p">
+                    <a-entity view="src1:#poster1; src2:#poster2;" position="0 1.6 0">
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton id="docs" tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton id="block" tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton id="know" tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton id="docs" tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
+                        <a-entity>
+                                <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
+                                width="0.1875" height="0.15" depth="0.005">
+                                <a-imagebutton tappable></a-imagebutton>
+                            </a-box>
+                        </a-entity>
                     </a-entity>
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton id="block" tappable></a-imagebutton>
-                        </a-box>
-                    </a-entity>
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton id="know" tappable></a-imagebutton>
-                        </a-box>
-                    </a-entity>
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton id="docs" tappable></a-imagebutton>
-                        </a-box>
-                    </a-entity>
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton tappable></a-imagebutton>
-                        </a-box>
-                    </a-entity>
-                    <a-entity>
-                            <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
-                            width="0.1875" height="0.15" depth="0.005">
-                            <a-imagebutton tappable></a-imagebutton>
-                        </a-box>
-                    </a-entity>
-                </a-entity>
-                <a-sky color="#E9E9EA"></a-sky>
+                    <a-sky color="#E9E9EA"></a-sky>
+            </a-entity>
         </a-scene>
 
     </body>
