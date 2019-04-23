@@ -1,4 +1,5 @@
 function paint(){
+    // TODO : @pratik
     app = "paint";
     console.log("paint called");
     // var myScene = document.querySelector('a-scene');
