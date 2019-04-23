@@ -23,6 +23,31 @@ AFRAME.registerComponent('tappable',{
             else if(app == "docs"){
                 updateText(self.el.children[0].getAttribute('value')); //  in docs.js
             }
+            else if(app == "know"){
+              if ((this.el.getAttribute("id")) == 'backspace'){
+                boxColor  = this.el.getAttribute("material").color
+                this.el.setAttribute("material", 'color:green');
+                setTimeout(() => {
+                  this.el.setAttribute("material", 'color:'+boxColor);
+                }, 500)
+                var searchBar = document.querySelector('#searchBar');
+                var text = searchBar.children[0];
+                str = text.getAttribute("value");
+                str = str.substring(0, str.length - 1); 
+                text.setAttribute("value", str);
+              }
+              else{
+                boxColor = this.el.getAttribute("material").color
+                this.el.setAttribute("material", 'color:green');
+                setTimeout(() => {
+                  this.el.setAttribute("material", 'color:'+boxColor);
+                }, 500)
+                var x = this.el.children[0].getAttribute("value"); 
+                var searchBar = document.querySelector('#searchBar');
+                var text = searchBar.children[0];
+                text.setAttribute("value", text.getAttribute("value")+ x);
+              }
+            }
         }, 500);
     }    
 });
@@ -128,8 +153,67 @@ AFRAME.registerComponent('fistable', {
             }
             this.handID = e.detail.handID;
         }
-    }
-});
+        else if(app == "know"){
+              var searchBar = document.querySelector('#searchBar');
+              var text = searchBar.children[0];
+              var search = text.getAttribute('value');
+              var scene = this.el;
+              console.log(scene);
+              this.el.removeChild(document.querySelector('#backspace'))
+              this.el.removeChild(document.querySelector('#mykeys'))
+    
+              const Http = new XMLHttpRequest();
+              const url='http://api.duckduckgo.com/?q=' + search.toLowerCase() + "+wikipedia" + '&format=json';
+              Http.open("GET", url);
+              Http.send();
+              Http.onreadystatechange=(e)=>{
+                var json = JSON.parse(Http.responseText);
+                if(json.AbstractText != ""){
+                  text = json.AbstractText;
+                  image = "../../assets/search/"+search.toLowerCase().replace(" ","") +".jpg";
+                  video = "../../assets/search/test.mp4";
+                  this.createSearchResultImages(scene, image);
+                  this.createVideoElement(scene,video);
+                }
+                else{
+                   text = "Sorry Invalid Search Query!"
+                }           
+                this.createSearchResult(scene, text);
+              }
+            }
+        },
+
+        createSearchResult : function(scene, text){
+          var textCard = document.createElement('a-entity');
+          textCard.setAttribute('card',{height:1.6, width:1.6, position: "-0.3 1.4 -1" });
+          textCard.setAttribute('material', {opacity:0.5, color:'white'});
+          
+          var cardTextElement = document.createElement('a-text');
+          cardTextElement.setAttribute('rotation',"0 0 0");
+          cardTextElement.setAttribute('value',text);
+          cardTextElement.setAttribute('color','#68696b');
+          cardTextElement.setAttribute('position',"0.1 0 0.3");
+          
+          textCard.appendChild(cardTextElement);
+          scene.appendChild(textCard);
+        },
+
+        createVideoElement(scene, videoUrl){
+          var video = document.createElement('a-video');
+          video.setAttribute('position', "1.5 1.2 -1")
+          video.setAttribute('rotation', "0 -30 0");
+          video.setAttribute('src', videoUrl);
+          scene.appendChild(video);
+
+        },
+
+        createSearchResultImages(scene, imageUrl){
+          var image = document.createElement('a-entity');
+          image.setAttribute('card',{height:1.6, width:1.6, src:imageUrl , position: "-3.0 1.2 -1"});
+          image.setAttribute('rotation', "0 30 0");
+          scene.appendChild(image);
+        }
+      });
 
 AFRAME.registerComponent('holdable', {
     schema: {activeColor: {default: 'orange'}},
