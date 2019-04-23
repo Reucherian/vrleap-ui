@@ -1,5 +1,6 @@
 function docs(){
     console.log("docs called");
+    app = "docs";
     var body = document.getElementById('p');
     while (body.firstChild) {
         body.removeChild(body.firstChild);
@@ -110,25 +111,25 @@ AFRAME.registerComponent('fistable',{
     }
 });
 
-AFRAME.registerComponent('swipable',{
-  init: function () {
-    this.handID =     /** @type {number} */            null;
-    this.el.addEventListener('leap-swipe', this.swipeto.bind(this));
-  },
+// AFRAME.registerComponent('swipable',{
+//   init: function () {
+//     this.handID =     /** @type {number} */            null;
+//     this.el.addEventListener('leap-swipe', this.swipeto.bind(this));
+//   },
 
-  swipeto: function (e) {
-    this.handID = e.detail.handID;
-    if(buffer !== ""){
-      console.log("Swipe fired : ",e.detail.swipeDirection);
-      console.log(buffer);
-      if(glob_buffer === "")
-        glob_buffer += buffer;
-      else  
-        glob_buffer += " " + buffer;
-      document.getElementById('editor').setAttribute('text',"value:" + glob_buffer + ";width: 2; color: black; lineHeight:100");
-      console.log(glob_buffer);
-      buffer = "";
-      document.getElementById("searchBar").children[0].setAttribute('value',buffer);
-    }
-  }
-});
+//   swipeto: function (e) {
+//     this.handID = e.detail.handID;
+//     if(buffer !== ""){
+//       console.log("Swipe fired : ",e.detail.swipeDirection);
+//       console.log(buffer);
+//       if(glob_buffer === "")
+//         glob_buffer += buffer;
+//       else  
+//         glob_buffer += " " + buffer;
+//       document.getElementById('editor').setAttribute('text',"value:" + glob_buffer + ";width: 2; color: black; lineHeight:100");
+//       console.log(glob_buffer);
+//       buffer = "";
+//       document.getElementById("searchBar").children[0].setAttribute('value',buffer);
+//     }
+//   }
+// });

@@ -1,4 +1,5 @@
 function paint(){
+    app = "paint";
     console.log("paint called");
     // var myScene = document.querySelector('a-scene');
     // // var ultimateParent = document.getElementById('ultimateParent');
