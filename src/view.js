@@ -1,3 +1,4 @@
+var lastrot = "none"
 export const view = AFRAME.registerComponent('view',{
     schema:{
         position :{default:'0 1.6 -2'},
@@ -72,6 +73,12 @@ export const view = AFRAME.registerComponent('view',{
         card5.setAttribute('rotation',"0 -120 0")
         card6.setAttribute('card',{position: "-0.16875 0 0.0974",src:this.data.src6});
         card6.setAttribute('rotation',"0 120 0")
+        this.el.setAttribute('animation',this.data.animation)
+        this.el.setAttribute('animation__2',this.data.animation__2)
+        this.el.setAttribute('animation__3',this.data.animation__3)
+        this.el.setAttribute('animation__4',this.data.animation__4)
+        this.el.setAttribute('animation__5',this.data.animation__5)
+        this.el.setAttribute('animation__6',this.data.animation__6)
         // this.el.appendChild(card1)
     },
     full_body_carousel_right_move:function() {
@@ -85,6 +92,17 @@ export const view = AFRAME.registerComponent('view',{
           console.log(lastrot)
           this.el.emit(lastrot);
         }
+      },
+    full_body_carousel_left_move:function(){
+      console.log("entering this function")
+      if (lastrot == "none" || lastrot == "rot0") {
+        this.el.emit("rot5");
+        lastrot = "rot5";
+      } else {
+        console.log()
+        lastrot = "rot" + (String((Number(lastrot[3]) - 1) % 6));
+        console.log(lastrot)
+        this.el.emit(lastrot);
       }
-      
+    }
 });
