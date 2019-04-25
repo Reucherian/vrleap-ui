@@ -63,6 +63,12 @@ AFRAME.registerComponent('swipable',{
       else if(app == "main"){
         console.log("Swipe fired : ",e.detail.swipeDirection); 
         console.log("Carasoul move");
+        if(e.detail.swipeDirection == "left"){
+          document.querySelector('[view]').components.view.full_body_carousel_right_move();
+        }
+        else{
+          document.querySelector('[view]').components.view.full_body_carousel_left_move();
+        }
       }
       else if(app == "know"){
         // var searchBar = document.querySelector('#searchBar');
@@ -147,7 +153,6 @@ AFRAME.registerComponent('fistable', {
         this.el.addEventListener('leap-fist', this.fist.bind(this));
     },
     fist: function (e) {
-        console.log(e.detail.hand.type);
         if(app != "main" && e.detail.hand.type == "left"){
             // Go back to the main app.
             // TODO : @reuben
