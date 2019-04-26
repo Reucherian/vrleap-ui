@@ -18,7 +18,7 @@
         <script src="js/custom.js"></script>
     </head>
     <body onload="main()">
-            <a-scene leap="host: 127.0.0.1" vr-mode-ui="enabled: true" clickable loadresults swipable fistable carousel>
+            <a-scene leap="host: 127.0.0.1" vr-mode-ui="enabled: true" clickable loadresults swipable fistable>
                 <a-assets>
                         <img id="poster1" src="/assets/poster1.png">
                         <img id="poster2" src="/assets/poster2.png">
@@ -35,7 +35,7 @@
                 <a-sky color="#E9E9EA"></a-sky>
                 <a-entity id="paint"></a-entity>
                 <a-entity id="p">
-                    <a-entity view="src1:#poster1; src2:#poster2;" position="0 1.6 0">
+                    <!-- <a-entity view="src1:#poster1; src2:#poster2;" position="0 1.6 0">
                         <a-entity>
                                 <a-box shadow="cast:true;receive:true" position="0 -0.025 0.0175" rotation="0 0 0"
                                 width="0.1875" height="0.15" depth="0.005">
@@ -76,7 +76,7 @@
                                 <a-imagebutton tappable></a-imagebutton>
                             </a-box>
                         </a-entity>
-                    </a-entity>
+                    </a-entity> -->
             </a-entity>
         </a-scene>
 

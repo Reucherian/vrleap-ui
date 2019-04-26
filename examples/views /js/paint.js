@@ -7,7 +7,7 @@ function paint(){
         body.removeChild(body.firstChild);
     }
 
-    hand = document.querySelectorAll('[leap-hand]');
+    var hand = document.querySelectorAll('[leap-hand]');
     hand[0].setAttribute('leap-hand','rawMode',true);
     hand[1].setAttribute('leap-hand','rawMode',true);
 
