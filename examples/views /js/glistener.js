@@ -5,27 +5,34 @@ AFRAME.registerComponent('tappable',{
 
     tap: function(e){
     this.originalColor = this.el.getAttribute('material').color;
-    if(this.originalColor == '#FFF')
+    console.log(this.originalColor);
+    if(this.originalColor == 'white'){
         this.el.setAttribute('material', 'color', 'green');
+        console.log(this.originalColor);
+    }
         var self = this;
         setTimeout(function() {
-            self.el.setAttribute('material', 'color', '#FFF');
+            self.el.setAttribute('material', 'color', 'white');
             if(app == "main"){
                 if(self.el.id && typeof window[self.el.id] === "function"){
                     eval(self.el.id)(); 
                     // Functions to be implemented
-                    // 1. paint 
+                    // 1. paint ✔
                     // 2. block ✔
-                    // 3. know
+                    // 3. know  ✔
                     // 4. docs  ✔
                 }
             }
             else if(app == "docs"){
+                console.log(app);
                 updateText(self.el.children[0].getAttribute('value')); //  in docs.js
             }
             else if(app == "know"){
+              console.log(app);
               if(self.el.children[0].getAttribute('value') != "Backspace"){
+                // console.log(self.el.children[0].getAttribute('value'));
                 buffer += self.el.children[0].getAttribute('value');
+                // console.log(buffer);
                 document.getElementById("searchBar").children[0].setAttribute('value',buffer);
               }
               else{
@@ -45,8 +52,11 @@ AFRAME.registerComponent('swipable',{
   
     swipeto: function (e) {
       this.handID = e.detail.handID;
-      
-      if(app == "docs"){
+      console.log(app);
+      console.log(e.detail.swipeDirection);
+      var ed = document.getElementById('editor');
+      if(app == "docs" || (typeof(ed) != 'undefined' && ed != null)){
+        app = "docs";
         if(buffer !== ""){
             console.log("Swipe fired : ",e.detail.swipeDirection);
             console.log(buffer);
@@ -63,6 +73,12 @@ AFRAME.registerComponent('swipable',{
       else if(app == "main"){
         console.log("Swipe fired : ",e.detail.swipeDirection); 
         console.log("Carasoul move");
+        if(e.detail.swipeDirection == "left"){
+          document.querySelector('[view]').components.view.full_body_carousel_right_move();
+        }
+        else{
+          document.querySelector('[view]').components.view.full_body_carousel_left_move();
+        }
       }
       else if(app == "know"){
         // var searchBar = document.querySelector('#searchBar');
@@ -147,10 +163,10 @@ AFRAME.registerComponent('fistable', {
         this.el.addEventListener('leap-fist', this.fist.bind(this));
     },
     fist: function (e) {
-        console.log(e.detail.hand.type);
         if(app != "main" && e.detail.hand.type == "left"){
             // Go back to the main app.
             // TODO : @reuben
+            app = "main";
             main();
         }
         if(app == "docs"){

@@ -17,24 +17,27 @@ function docs(){
     e.setAttribute('visible',false);
     e.setAttribute('id',"editor");
     // console.log(document.body.querySelector('a-scene'))
-    document.body.querySelector('a-scene').appendChild(e);
+    body.appendChild(e);
+    // document.body.querySelector('a-scene').appendChild(e);
 
     var backSpaceKey = document.createElement('a-entity');
     backSpaceKey.setAttribute('geometry',{ primitive:'box', height:0.02, width:0.3, depth: 0.01 });
     backSpaceKey.setAttribute('position', "0.16 1.760 -0.25");
-    backSpaceKey.setAttribute('material', {opacity:0.5,  color:'#A9A9A9'});
+    backSpaceKey.setAttribute('material', {opacity:0.5,  color:'white'});
     backSpaceKey.setAttribute('id', 'glob_backspace')
     backSpaceKey.setAttribute('tappable', '');
     backSpaceKey.setAttribute('class', 'tappable');
     backSpaceKey.setAttribute('visible', false);
     var keyTextElement = document.createElement('a-text');
-    keyTextElement.setAttribute('scale',"0.1 0.1 0.1");
+    keyTextElement.setAttribute('scale',"0.6 0.6 0.6");
     keyTextElement.setAttribute('rotation',"0 0 0");
     keyTextElement.setAttribute('value',"Backspace");
     keyTextElement.setAttribute('color','#68696b');
-    keyTextElement.setAttribute('position',"-0.08 0 0.006");
+    keyTextElement.setAttribute('position',"0.239 0 0.006");
 
     backSpaceKey.appendChild(keyTextElement);
+
+    body.appendChild(backSpaceKey);
     document.body.querySelector('a-scene').appendChild(backSpaceKey);
 
     document.body.querySelector('a-scene').setAttribute('fistable','');
